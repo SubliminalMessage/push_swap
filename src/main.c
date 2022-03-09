@@ -6,6 +6,8 @@
 // https://numbergenerator.org/randomnumbergenerator
 // https://www.notion.so/Push_swap-21758af851874d70a09c854ae200a0ae
 
+// ARG=`perl -e "use List::Util 'shuffle'; print join(' ', shuffle(0..(5 - 1)))"` && ./push_swap $ARG > output.txt && wc -l output.txt && rm output.txt && echo $ARG && echo "\n\n"
+
 void    leaks(void)
 {
     system("leaks -q push_swap");
@@ -27,7 +29,9 @@ int main(int argc, char **argv)
         merge_sort(&sorted);
         transfer_numbers(&sorted, &stack_a);
         size = ft_lstsize(sorted);
-
+        //print_stack(stack_a);
+        chamber_sort(&stack_a, &stack_b);
+        //print_stack(stack_a);
     }
     clean_exit(&sorted, &stack_a, &stack_b, NULL);
 }

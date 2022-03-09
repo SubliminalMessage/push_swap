@@ -26,7 +26,9 @@ SRCS		=	main.c \
 				parse_numbers.c \
 				basic_movements.c \
 				combo_movements.c \
-				calm_down.c
+				calm_down.c \
+				stack_utils.c \
+				chamber_algorithm.c 
 
 OBJS = $(SRCS:%.c=bin/%.o)
 
