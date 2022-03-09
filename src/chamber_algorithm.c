@@ -1,7 +1,7 @@
 #include <push_swap.h>
 
 /*
-    Worst case:  ./push_swap 2 1 0 4 3 > output.txt && wc -l output.txt && rm output.txt
+    Worst case:  ./push_swap 1 2 0 4 3 > output.txt && wc -l output.txt && rm output.txt
 
     Chamber Sort Algorithm
 

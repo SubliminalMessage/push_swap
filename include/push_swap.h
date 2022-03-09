@@ -36,6 +36,7 @@ int     find_number(t_list *stack, unsigned int find, int len);
 void	rotate_n_times(t_list **root, int steps, char stack);
 void	empty_stack(t_list **src, t_list **dst, char drop_at);
 
-// chamber_algorithm.c
+// Algorithms
 void    chamber_sort(t_list **stack_a, t_list **stack_b);
+void    radix_sort(t_list **stack_a, t_list **stack_b);
 #endif

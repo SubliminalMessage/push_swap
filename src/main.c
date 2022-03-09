@@ -30,7 +30,8 @@ int main(int argc, char **argv)
         transfer_numbers(&sorted, &stack_a);
         size = ft_lstsize(sorted);
         //print_stack(stack_a);
-        chamber_sort(&stack_a, &stack_b);
+        //chamber_sort(&stack_a, &stack_b);
+        radix_sort(&stack_a, &stack_b);
         //print_stack(stack_a);
     }
     clean_exit(&sorted, &stack_a, &stack_b, NULL);

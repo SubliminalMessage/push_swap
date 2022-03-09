@@ -24,7 +24,7 @@ void    rx(char stack, t_list **root, int print_text)
 {
     t_list *first_node;
 
-    if (ft_lstsize(*root) == 1)
+    if (*root == NULL || ft_lstsize(*root) == 1)
         return ;
     first_node = *root;
     *root = first_node->next;
