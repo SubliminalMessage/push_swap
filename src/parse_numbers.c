@@ -8,7 +8,7 @@ void	clean_exit(t_list **a, t_list **b, t_list **c, char *msg)
 	ft_lstclear(b);
 	ft_lstclear(c);
 	if (msg != NULL)
-		ft_putstr_fd(msg, 1);
+		ft_putstr_fd(msg, 2);
 	exit(0);
 }
 

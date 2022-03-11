@@ -10,14 +10,19 @@ void    smart_rotate(t_list **root, unsigned int find, char stack, int effic)
 	steps = find_number(*root, find);
 	if (steps == 0)
 		return ;
-	if (steps == 1)
-		sx(stack, root, 1);
+	if (steps == 1 && effic)
+	{
+		if ((*root)->value == (find + 2))
+			rx(stack, root, 1);
+		else
+			sx(stack, root, 1);
+	}
 	else if (len == 3 && effic)
 	{
 		if ((*root)->value == (find + 2) && (*root)->next->value == (find + 1))
 		{
 			sx(stack, root, 1);
-			rrx('a', root, 1);
+			rrx(stack, root, 1);
 		}
 		else if ((*root)->value == (find + 1) && (*root)->next->value == find)
 			sx(stack, root, 1);

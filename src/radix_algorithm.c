@@ -35,7 +35,7 @@ void    radix_sort(t_list **stack_a, t_list **stack_b)
                 rx('a', stack_a, 1);
             stack_len--;
         }
-        empty_stack(stack_b, stack_a, 'a');
+        empty_stack(stack_b, stack_a, 'a', ft_lstsize(*stack_b));
         binary_position++;
     }
 }

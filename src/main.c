@@ -8,11 +8,6 @@
 
 // ARG=`perl -e "use List::Util 'shuffle'; print join(' ', shuffle(0..(5 - 1)))"` && ./push_swap $ARG > output.txt && wc -l output.txt && rm output.txt && echo $ARG && echo "\n\n"
 
-void    leaks(void)
-{
-    system("leaks -q push_swap");
-}
-
 int main(int argc, char **argv)
 {
     t_list  *sorted;
@@ -37,6 +32,8 @@ int main(int argc, char **argv)
         //print_stack(stack_a);
         //radix_sort(&stack_a, &stack_b);
         //print_stack(stack_b);
+
+        //printf("Is sorted? -> %d\n", is_sorted(stack_a));
     }
     clean_exit(&sorted, &stack_a, &stack_b, NULL);
 }
