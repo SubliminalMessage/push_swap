@@ -31,12 +31,18 @@ void    calm_number_down(t_list **root, int original, int value);
 void    transfer_numbers(t_list **sorted, t_list **stack);
 
 // stack_utils.c
-void    smart_rotate(t_list **root, unsigned int find, char stack);
-int     find_number(t_list *stack, unsigned int find, int len);
+void    smart_rotate(t_list **root, unsigned int find, char stack, int effic);
+int     find_number(t_list *stack, unsigned int find);
 void	rotate_n_times(t_list **root, int steps, char stack);
-void	empty_stack(t_list **src, t_list **dst, char drop_at);
+void	empty_stack(t_list **src, t_list **dst, char drop_at, int drop_count);
+unsigned int	*to_array(t_list *stack);
 
 // Algorithms
 void    chamber_sort(t_list **stack_a, t_list **stack_b);
 void    radix_sort(t_list **stack_a, t_list **stack_b);
+
+
+
+void    sort_and_empty_stack(t_list **stack_a, t_list **stack_b);
+void    insertion_sort(t_list **stack_a, t_list **stack_b);
 #endif

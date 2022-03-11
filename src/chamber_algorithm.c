@@ -21,15 +21,18 @@
 void    chamber_sort(t_list **stack_a, t_list **stack_b)
 {
     int smallest;
+    int pushed;
 
     smallest = 0;
+    pushed = 0;
     while (!is_sorted(*stack_a)) // #1
     {
-        smart_rotate(stack_a, smallest, 'a'); // #2
+        smart_rotate(stack_a, smallest, 'a', 1); // #2
         if (is_sorted(*stack_a)) // #3
             break ;
         px('b', stack_a, stack_b, 1); // #4
+        pushed++;
         smallest++;
     }
-    empty_stack(stack_b, stack_a, 'a'); // #6
+    empty_stack(stack_b, stack_a, 'a', pushed); // #6
 }

@@ -29,7 +29,9 @@ SRCS		=	main.c \
 				calm_down.c \
 				stack_utils.c \
 				chamber_algorithm.c \
-				radix_algorithm.c
+				radix_algorithm.c \
+				stack_algorithm.c \
+				insertion_algorithm.c
 
 OBJS = $(SRCS:%.c=bin/%.o)
 

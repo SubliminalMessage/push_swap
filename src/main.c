@@ -29,10 +29,14 @@ int main(int argc, char **argv)
         merge_sort(&sorted);
         transfer_numbers(&sorted, &stack_a);
         size = ft_lstsize(sorted);
+        //insertion_sort(&stack_a, &stack_b);
+        if (size >= 10)
+            sort_and_empty_stack(&stack_a, &stack_b);
+        else
+            chamber_sort(&stack_a, &stack_b);
         //print_stack(stack_a);
-        //chamber_sort(&stack_a, &stack_b);
-        radix_sort(&stack_a, &stack_b);
-        //print_stack(stack_a);
+        //radix_sort(&stack_a, &stack_b);
+        //print_stack(stack_b);
     }
     clean_exit(&sorted, &stack_a, &stack_b, NULL);
 }
