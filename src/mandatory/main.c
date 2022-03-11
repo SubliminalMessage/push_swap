@@ -25,7 +25,7 @@ int main(int argc, char **argv)
         transfer_numbers(&sorted, &stack_a);
         size = ft_lstsize(sorted);
         //insertion_sort(&stack_a, &stack_b);
-        if (size >= 10)
+        if (size >= 50)
             sort_and_empty_stack(&stack_a, &stack_b);
         else
             chamber_sort(&stack_a, &stack_b);
@@ -34,8 +34,8 @@ int main(int argc, char **argv)
         //print_stack(stack_b);
 
         //printf("Is sorted? -> %d\n", is_sorted(stack_a));
+        clean_exit(&sorted, &stack_a, &stack_b, NULL);
     }
-    clean_exit(&sorted, &stack_a, &stack_b, NULL);
 }
 
 void    print_stack(t_list *stack)

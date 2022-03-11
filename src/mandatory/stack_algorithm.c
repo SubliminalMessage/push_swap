@@ -1,7 +1,7 @@
 #include <push_swap.h>
 
 /*
-    Stack Algorith
+    Stack Algorithm
 */
 
 // ChunkSize 100 -> ~1745
@@ -41,10 +41,17 @@ void    sort_and_empty_stack(t_list **stack_a, t_list **stack_b)
     */
 
     size = ft_lstsize(*stack_a);
+    double multiplier = 0.25;;
     if (size >= 250)
+    {
         chunk_size = 500 / 8;
+        multiplier = 0.25;
+    }
     else
+    {
         chunk_size = size / 5;
+        multiplier = 0.25;
+    }
     stack = 0;
     found = 0;
     while (*stack_a != NULL)
@@ -62,7 +69,7 @@ void    sort_and_empty_stack(t_list **stack_a, t_list **stack_b)
             if (value >= (stack * chunk_size) + (chunk_size / 2))
             {
                 if ((*stack_a) != NULL && (*stack_a)->value > ((stack + 1) * chunk_size))
-                    rr(stack_a, stack_b);
+                    rr(stack_a, stack_b, 1);
                 else
                     rx('b', stack_b, 1);
             }

@@ -1,11 +1,11 @@
-#include <push_swap.h>
+#include <common.h>
 
 void    sx(char stack, t_list **root, int print_text)
 {
     t_list *first_node;
     t_list *second_node;
 
-    if (ft_lstsize(*root) == 1)
+    if (root == NULL || *root == NULL || ft_lstsize(*root) == 1)
         return ;
     first_node = *root;
     second_node = first_node->next;
@@ -24,7 +24,7 @@ void    rx(char stack, t_list **root, int print_text)
 {
     t_list *first_node;
 
-    if (*root == NULL || ft_lstsize(*root) == 1)
+    if (root == NULL || *root == NULL || ft_lstsize(*root) == 1)
         return ;
     first_node = *root;
     *root = first_node->next;
@@ -44,7 +44,7 @@ void    rrx(char stack, t_list **root, int print_text)
     t_list *last_node;
     t_list *prev_node;
 
-    if (ft_lstsize(*root) == 1)
+    if (root == NULL || *root == NULL || ft_lstsize(*root) == 1)
         return ;
     first_node = *root;
     last_node = ft_lstlast(*root);
@@ -66,6 +66,8 @@ void    px(char stack, t_list **src, t_list **dst, int print_text)
 {
     t_list *first_node;
 
+    if (src == NULL || *src == NULL)
+        return ;
     if (ft_lstsize(*src) == 1)
     {
         ft_lstadd_front(dst, *src);

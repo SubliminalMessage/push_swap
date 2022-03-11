@@ -3,7 +3,7 @@
 ### ---   ---   ---         ---   ---   --- ###
 
 CC	= gcc
-CFLAGS	= -Wall -Werror -Wextra #-g3 -fsanitize=address
+CFLAGS	= -Wall -Werror -Wextra -g3 -fsanitize=address
 
 ### ---   ---   ---         ---   ---   --- ###
 #               PROJECT PATHS                 #
@@ -11,29 +11,39 @@ CFLAGS	= -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 INCS_PATH			= include/
 SRCS_PATH			= src/
-BIN_PATH			= bin/
 LIBFT_PATH			= libft/
 
 ### ---   ---   ---         ---   ---   --- ###
 #               PROJECT FILES                 #
 ### ---   ---   ---         ---   ---   --- ###
 
-NAME		= push_swap
+NAME			= push_swap
+CHECKER			= checker
 LIBFT		= $(LIBFT_PATH)/libft.a
 
-SRCS		=	main.c \
-				merge_sort.c \
-				parse_numbers.c \
-				basic_movements.c \
-				combo_movements.c \
-				calm_down.c \
-				stack_utils.c \
-				chamber_algorithm.c \
-				radix_algorithm.c \
-				stack_algorithm.c \
-				insertion_algorithm.c
+MANDATORY_FILES	=	mandatory/main.c \
+					mandatory/merge_sort.c \
+					mandatory/parse_numbers.c \
+					mandatory/calm_down.c \
+					mandatory/stack_utils.c \
+					mandatory/chamber_algorithm.c \
+					mandatory/radix_algorithm.c \
+					mandatory/stack_algorithm.c \
+					mandatory/insertion_algorithm.c
 
-OBJS = $(SRCS:%.c=bin/%.o)
+COMMON_FILES	=	common/basic_movements.c \
+					common/combo_movements.c \
+					common/basic_utils.c
+
+BONUS_FILES		=	bonus/main.c
+
+MAND_OBJS = $(MANDATORY_FILES:%.c=bin/%.o)
+COMM_OBJS = $(COMMON_FILES:%.c=bin/%.o)
+BONUS_OBJS = $(BONUS_FILES:%.c=bin/%.o)
+
+PS_OBJS = $(MAND_OBJS) $(COMM_OBJS)
+CHECK_OBJS = $(BONUS_OBJS) $(COMM_OBJS)
+
 
 ### ---   ---   ---         ---   ---   --- ###
 #              COLORS & EXTRAS :)             #
@@ -52,29 +62,48 @@ BLUE	= '\033[1;34m'
 
 .PHONY: all re clean fclean bonus
 
-all: $(NAME)
+all: bonus
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(LIBFT) $(PS_OBJS)
 	@echo $(PURPLE)"[Creating $(NAME) "$(PURPLE)"]"$(WHITE)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -I $(INCS_PATH) -I $(LIBFT_PATH) -o $(NAME)
+	$(CC) $(CFLAGS) $(PS_OBJS) $(LIBFT) -I $(INCS_PATH) -I $(LIBFT_PATH) -o $(NAME)
+
+bonus: $(NAME) $(CHECKER)
+
+$(CHECKER): $(LIBFT) $(CHECK_OBJS)
+	@echo $(PURPLE)"[Creating $(CHECKER) "$(PURPLE)"]"$(WHITE)
+	$(CC) $(CFLAGS) $(CHECK_OBJS) $(LIBFT) -I $(INCS_PATH) -I $(LIBFT_PATH) -o $(CHECKER)
 
 $(LIBFT):
 	@echo $(PURPLE)"[Make Libft]"$(WHITE)
 	@make -C $(LIBFT_PATH)
 
-bin/%.o: src/%.c
+bin/bonus/%.o: src/bonus/%.c
 	@echo $(BLUE)"[Compilation]"$(WHITE)": $< "
+	@mkdir -p bin/bonus
+	$(CC) $(CFLAGS) -I $(INCS_PATH) -I $(LIBFT_PATH) -c $< -o $@
+
+bin/mandatory/%.o: src/mandatory/%.c
+	@echo $(BLUE)"[Compilation]"$(WHITE)": $< "
+	@mkdir -p bin/mandatory
+	$(CC) $(CFLAGS) -I $(INCS_PATH) -I $(LIBFT_PATH) -c $< -o $@
+
+bin/common/%.o: src/common/%.c
+	@echo $(BLUE)"[Compilation]"$(WHITE)": $< "
+	@mkdir -p bin/common
 	$(CC) $(CFLAGS) -I $(INCS_PATH) -I $(LIBFT_PATH) -c $< -o $@
 
 clean:
 	@echo $(RED)"[Deleting Object Files]"$(WHITE)
-	@rm -rf $(OBJS)
+	@rm -rf bin
 	@echo $(RED)"[Deleting Libft Object Files]"$(WHITE)
 	@make clean -C $(LIBFT_PATH)
 
 fclean: clean 
 	@echo $(RED)"[Deleting $(NAME)]"$(WHITE)
-	@rm -rf $(NAME)
+	@rm -f $(NAME)
+	@echo $(RED)"[Deleting $(NAME)]"$(WHITE)
+	@rm -f $(CHECKER)
 	@make fclean -C $(LIBFT_PATH)
 
 re: fclean all
