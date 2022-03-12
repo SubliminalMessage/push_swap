@@ -16,12 +16,12 @@ int main(int argc, char **argv)
     if (argc > 1)
     {
         parse_input(argc, argv, &stack_a);
-        operation = get_next_line(1);
+        operation = get_next_line(STDIN_FILENO);
         while (operation != NULL)
         {
             execute_operation(operation, &stack_a, &stack_b);
 			free(operation);
-            operation = get_next_line(1);
+            operation = get_next_line(STDIN_FILENO);
         }
 		if (is_sorted(stack_a) && stack_b == NULL)
 			write(1, "OK\n", 3);
