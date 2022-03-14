@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dangonza <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/14 15:16:51 by dangonza          #+#    #+#             */
+/*   Updated: 2022/03/14 15:19:46 by dangonza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 // Rotates the stack in the most efficient direction, so 'find' is on top
-void    smart_rotate(t_list **root, unsigned int find, char stack, int effic)
+void	smart_rotate(t_list **root, unsigned int find, char stack, int effic)
 {
 	int	len;
-    int	steps;
+	int	steps;
 
 	len = ft_lstsize(*root);
 	steps = find_number(*root, find);
@@ -34,11 +46,11 @@ void    smart_rotate(t_list **root, unsigned int find, char stack, int effic)
 		rotate_n_times(root, steps, stack);
 }
 
-int     find_number(t_list *stack, unsigned int find)
+int	find_number(t_list *stack, unsigned int find)
 {
 	int	index;
-	int len;
-	
+	int	len;
+
 	len = ft_lstsize(stack);
 	index = 0;
 	while (stack != NULL && stack->value != find)

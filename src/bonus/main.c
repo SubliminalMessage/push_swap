@@ -1,38 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dangonza <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/14 15:13:08 by dangonza          #+#    #+#             */
+/*   Updated: 2022/03/14 15:13:13 by dangonza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <checker.h>
 
-#include <stdio.h>
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_list  *stack_a;
-    t_list  *stack_b;
-    char    *operation;
-    int     op_count;
-	//int		everything_ok;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	char	*operation;
+	int		op_count;
 
-    stack_a = NULL;
-    stack_b = NULL;
-    op_count = 0;
-    if (argc > 1)
-    {
-        parse_input(argc, argv, &stack_a);
-        operation = get_next_line(STDIN_FILENO);
-        while (operation != NULL)
-        {
-            execute_operation(operation, &stack_a, &stack_b);
+	stack_a = NULL;
+	stack_b = NULL;
+	op_count = 0;
+	if (argc > 1)
+	{
+		parse_input(argc, argv, &stack_a);
+		operation = get_next_line(STDIN_FILENO);
+		while (operation != NULL)
+		{
+			execute_operation(operation, &stack_a, &stack_b);
 			free(operation);
-            operation = get_next_line(STDIN_FILENO);
-        }
+			operation = get_next_line(STDIN_FILENO);
+		}
 		if (is_sorted(stack_a) && stack_b == NULL)
 			write(1, "OK\n", 3);
 		else
 			write(1, "KO\n", 3);
-    }
+	}
 }
 
-void    parse_input(int argc, char **argv, t_list **stack)
+void	parse_input(int argc, char **argv, t_list **stack)
 {
-    int			i;
+	int			i;
 	int			j;
 	char		**num_arr;
 	long int	number;

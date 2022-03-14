@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_numbers.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dangonza <dangonza@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/14 15:25:06 by dangonza          #+#    #+#             */
+/*   Updated: 2022/03/14 15:26:03 by dangonza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 void	parse_numbers(int argc, char **argv, t_list **sort, t_list **stack)
@@ -28,4 +40,3 @@ void	parse_numbers(int argc, char **argv, t_list **sort, t_list **stack)
 	if (is_sorted(*sort) || are_duplicates(*sort) || ft_lstsize(*sort) == 1)
 		clean_exit(sort, stack, NULL, "Error\n");
 }
-

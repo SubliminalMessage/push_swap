@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   chamber_algorithm.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dangonza <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/14 15:30:26 by dangonza          #+#    #+#             */
+/*   Updated: 2022/03/14 15:32:45 by dangonza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 /*
-    Worst case:  ./push_swap 1 2 0 4 3 > output.txt && wc -l output.txt && rm output.txt
-
     Chamber Sort Algorithm
 
     1. Check if the stack A is sorted
@@ -18,21 +28,21 @@
     7. You're done
 */
 
-void    chamber_sort(t_list **stack_a, t_list **stack_b)
+void	chamber_sort(t_list **stack_a, t_list **stack_b)
 {
-    int smallest;
-    int pushed;
+	int	smallest;
+	int	pushed;
 
-    smallest = 0;
-    pushed = 0;
-    while (!is_sorted(*stack_a)) // #1
-    {
-        smart_rotate(stack_a, smallest, 'a', 1); // #2
-        if (is_sorted(*stack_a)) // #3
-            break ;
-        px('b', stack_a, stack_b, 1); // #4
-        pushed++;
-        smallest++;
-    }
-    empty_stack(stack_b, stack_a, 'a', pushed); // #6
+	smallest = 0;
+	pushed = 0;
+	while (!is_sorted(*stack_a))
+	{
+		smart_rotate(stack_a, smallest, 'a', 1);
+		if (is_sorted(*stack_a))
+			break ;
+		px('b', stack_a, stack_b, 1);
+		pushed++;
+		smallest++;
+	}
+	empty_stack(stack_b, stack_a, 'a', pushed);
 }

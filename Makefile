@@ -3,7 +3,7 @@
 ### ---   ---   ---         ---   ---   --- ###
 
 CC	= gcc
-CFLAGS	= -Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS	= -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 ### ---   ---   ---         ---   ---   --- ###
 #               PROJECT PATHS                 #
@@ -62,13 +62,13 @@ BLUE	= '\033[1;34m'
 
 .PHONY: all re clean fclean bonus
 
-all: bonus
+all: $(NAME)
 
 $(NAME): $(LIBFT) $(PS_OBJS)
 	@echo $(PURPLE)"[Creating $(NAME) "$(PURPLE)"]"$(WHITE)
 	$(CC) $(CFLAGS) $(PS_OBJS) $(LIBFT) -I $(INCS_PATH) -I $(LIBFT_PATH) -o $(NAME)
 
-bonus: $(NAME) $(CHECKER)
+bonus: $(CHECKER)
 
 $(CHECKER): $(LIBFT) $(CHECK_OBJS)
 	@echo $(PURPLE)"[Creating $(CHECKER) "$(PURPLE)"]"$(WHITE)
