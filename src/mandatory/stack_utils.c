@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dangonza <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dutch <dutch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:16:51 by dangonza          #+#    #+#             */
-/*   Updated: 2022/03/14 15:19:46 by dangonza         ###   ########.fr       */
+/*   Updated: 2022/03/15 18:57:13 by dutch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	smart_rotate(t_list **root, unsigned int find, char stack, int effic)
 	else
 		rotate_n_times(root, steps, stack);
 }
-
+#include <stdio.h>
 int	find_number(t_list *stack, unsigned int find)
 {
 	int	index;

@@ -3,7 +3,7 @@
 ### ---   ---   ---         ---   ---   --- ###
 
 CC	= gcc
-CFLAGS	= -Wall -Werror -Wextra #-g3 -fsanitize=address
+CFLAGS	= -Wall -Werror -Wextra -g3 -fsanitize=address
 
 ### ---   ---   ---         ---   ---   --- ###
 #               PROJECT PATHS                 #
@@ -27,9 +27,9 @@ MANDATORY_FILES	=	mandatory/main.c \
 					mandatory/calm_down.c \
 					mandatory/stack_utils.c \
 					mandatory/chamber_algorithm.c \
-					mandatory/radix_algorithm.c \
 					mandatory/stack_algorithm.c \
-					mandatory/insertion_algorithm.c
+					mandatory/stack_algo_utils.c
+					
 
 COMMON_FILES	=	common/basic_movements.c \
 					common/combo_movements.c \
