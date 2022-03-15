@@ -6,7 +6,7 @@
 /*   By: dutch <dutch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:16:51 by dangonza          #+#    #+#             */
-/*   Updated: 2022/03/15 18:57:13 by dutch            ###   ########.fr       */
+/*   Updated: 2022/03/15 19:16:39 by dutch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	smart_rotate(t_list **root, unsigned int find, char stack, int effic)
 
 	len = ft_lstsize(*root);
 	steps = find_number(*root, find);
-	if (steps == 0)
-		return ;
 	if (steps == 1 && effic)
 	{
 		if ((*root)->value == (find + 2))
@@ -38,14 +36,11 @@ void	smart_rotate(t_list **root, unsigned int find, char stack, int effic)
 		}
 		else if ((*root)->value == (find + 1) && (*root)->next->value == find)
 			sx(stack, root, 1);
-		else
-			rotate_n_times(root, steps, stack);
 		return ;
 	}
-	else
-		rotate_n_times(root, steps, stack);
+	rotate_n_times(root, steps, stack);
 }
-#include <stdio.h>
+
 int	find_number(t_list *stack, unsigned int find)
 {
 	int	index;
@@ -67,6 +62,8 @@ void	rotate_n_times(t_list **root, int steps, char stack)
 {
 	int	is_negative;
 
+	if (steps == 0)
+		return ;
 	is_negative = 0;
 	if (steps < 0)
 	{

@@ -38,5 +38,5 @@ void	empty_chamber(long *small, int *chamber, t_list **stack_a);
 long	triadic(int cond, long true_v, long false_v);
 void	push_smallest(t_list **a, t_list **b, long *small, long high);
 void	push_to_a(t_list **a, t_list **b, long number);
-int	variable_setters(t_list *b, long *high, long *small, t_uint chk_sz);
+int		variable_setters(t_list *b, long *high, long *small, t_uint chk_sz);
 #endif

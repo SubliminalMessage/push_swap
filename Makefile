@@ -28,7 +28,8 @@ MANDATORY_FILES	=	mandatory/main.c \
 					mandatory/stack_utils.c \
 					mandatory/chamber_algorithm.c \
 					mandatory/stack_algorithm.c \
-					mandatory/stack_algo_utils.c
+					mandatory/stack_algo_utils1.c \
+					mandatory/stack_algo_utils2.c \
 					
 
 COMMON_FILES	=	common/basic_movements.c \

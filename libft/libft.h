@@ -6,7 +6,7 @@
 /*   By: dutch <dutch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 15:26:34 by dangonza          #+#    #+#             */
-/*   Updated: 2022/03/11 22:53:06 by dutch            ###   ########.fr       */
+/*   Updated: 2022/03/15 19:22:41 by dutch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *));
 
 // get_next_line.c
-char	*chop_string(char **leftover);
-char	*save_leftovers(char *leftover);
-char	*get_next_line(int fd);
-char	*malloc_leftover(void);
+char		*chop_string(char **leftover);
+char		*save_leftovers(char *leftover);
+char		*get_next_line(int fd);
+char		*malloc_leftover(void);
 
 // get_next_line_utils.c
-char	*ft_strjoin_gnl(char *s1, char *s2);
-int		ft_strchr_gnl(const char *s, int c);
+char		*ft_strjoin_gnl(char *s1, char *s2);
+int			ft_strchr_gnl(const char *s, int c);
 
 #endif

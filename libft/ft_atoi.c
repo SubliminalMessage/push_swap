@@ -6,20 +6,20 @@
 /*   By: dutch <dutch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:02:57 by dangonza          #+#    #+#             */
-/*   Updated: 2022/03/06 18:23:48 by dutch            ###   ########.fr       */
+/*   Updated: 2022/03/15 19:22:27 by dutch            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static int	ft_isspace(char c);
+static int		ft_isspace(char c);
 static long int	return_final_value(long long final, int negative_sign);
 
 long int	ft_atoi(const char *str)
 {
 	long long	final;
-	int					negative_sign;
-	int					index;
+	int			negative_sign;
+	int			index;
 
 	index = 0;
 	final = 0;
@@ -48,7 +48,7 @@ static long int	return_final_value(long long final, int negative_sign)
 		return (0);
 	else if (final > 9223372036854775807 && negative_sign > 0)
 		return (-1);
-	return ((long) (final * negative_sign));
+	return ((long)(final * negative_sign));
 }
 
 static int	ft_isspace(char c)
