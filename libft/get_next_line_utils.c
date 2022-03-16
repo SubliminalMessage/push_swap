@@ -6,7 +6,7 @@
 /*   By: dutch <dutch@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:06:27 by dangonza          #+#    #+#             */
-/*   Updated: 2022/03/11 22:47:19 by dutch            ###   ########.fr       */
+/*   Updated: 2022/03/16 15:11:12 by dangonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,3 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	free(s1);
 	return (new_str);
 }
-
