@@ -6,16 +6,24 @@
 /*   By: dangonza <dangonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:16:51 by dangonza          #+#    #+#             */
-/*   Updated: 2022/03/21 16:53:56 by dangonza         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:15:57 by dangonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static void	swap_and_rotate(t_list **root, char stack)
+static void	try_again(t_list **root, char stack, unsigned int find)
 {
-	sx(stack, root, 1);
-	rrx(stack, root, 1);
+	if ((*root)->value == (find + 2) && (*root)->next->value == (find + 1))
+	{
+		sx(stack, root, 1);
+		rrx(stack, root, 1);
+	}
+	else if ((*root)->value == find && (*root)->next->value == (find + 2))
+	{
+		rrx(stack, root, 1);
+		sx(stack, root, 1);
+	}
 }
 
 // Rotates the stack in the most efficient direction, so 'find' is on top
@@ -35,12 +43,12 @@ void	smart_rotate(t_list **rt, unsigned int fnd, char stack, int effic)
 	}
 	else if (len == 3 && effic)
 	{
-		if ((*rt)->value == (fnd + 2) && (*rt)->next->value == (fnd + 1))
-			swap_and_rotate(rt, stack);
-		else if ((*rt)->value == (fnd + 1) && (*rt)->next->value == fnd)
+		if ((*rt)->value == (fnd + 1) && (*rt)->next->value == fnd)
 			sx(stack, rt, 1);
 		else if ((*rt)->value == (fnd + 1) && (*rt)->next->value == (fnd + 2))
 			rrx(stack, rt, 1);
+		else
+			try_again(rt, stack, fnd);
 	}
 	else
 		rotate_n_times(rt, steps, stack);
