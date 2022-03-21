@@ -3,42 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dutch <dutch@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dangonza <dangonza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:16:51 by dangonza          #+#    #+#             */
-/*   Updated: 2022/03/15 19:16:39 by dutch            ###   ########.fr       */
+/*   Updated: 2022/03/21 16:53:56 by dangonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+static void	swap_and_rotate(t_list **root, char stack)
+{
+	sx(stack, root, 1);
+	rrx(stack, root, 1);
+}
+
 // Rotates the stack in the most efficient direction, so 'find' is on top
-void	smart_rotate(t_list **root, unsigned int find, char stack, int effic)
+void	smart_rotate(t_list **rt, unsigned int fnd, char stack, int effic)
 {
 	int	len;
 	int	steps;
 
-	len = ft_lstsize(*root);
-	steps = find_number(*root, find);
+	len = ft_lstsize(*rt);
+	steps = find_number(*rt, fnd);
 	if (steps == 1 && effic)
 	{
-		if ((*root)->value == (find + 2))
-			rx(stack, root, 1);
+		if ((*rt)->value == (fnd + 2))
+			rx(stack, rt, 1);
 		else
-			sx(stack, root, 1);
+			sx(stack, rt, 1);
 	}
 	else if (len == 3 && effic)
 	{
-		if ((*root)->value == (find + 2) && (*root)->next->value == (find + 1))
-		{
-			sx(stack, root, 1);
-			rrx(stack, root, 1);
-		}
-		else if ((*root)->value == (find + 1) && (*root)->next->value == find)
-			sx(stack, root, 1);
-		return ;
+		if ((*rt)->value == (fnd + 2) && (*rt)->next->value == (fnd + 1))
+			swap_and_rotate(rt, stack);
+		else if ((*rt)->value == (fnd + 1) && (*rt)->next->value == fnd)
+			sx(stack, rt, 1);
+		else if ((*rt)->value == (fnd + 1) && (*rt)->next->value == (fnd + 2))
+			rrx(stack, rt, 1);
 	}
-	rotate_n_times(root, steps, stack);
+	else
+		rotate_n_times(rt, steps, stack);
 }
 
 int	find_number(t_list *stack, unsigned int find)
@@ -90,20 +95,4 @@ void	empty_stack(t_list **src, t_list **dst, char drop_at, int drop_count)
 		px(drop_at, src, dst, 1);
 		len++;
 	}
-}
-
-unsigned int	*to_array(t_list *stack)
-{
-	unsigned int	*array;
-	int				i;
-
-	i = 0;
-	array = malloc(sizeof(unsigned int) * ft_lstsize(stack));
-	while (stack != NULL)
-	{
-		array[i] = stack->value;
-		stack = stack->next;
-		i++;
-	}
-	return (array);
 }
